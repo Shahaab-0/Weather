@@ -1,39 +1,88 @@
 import React from 'react';
-import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Form = ({search, onSetSearch, onSubmit}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Enter city name and press search button</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter city"
-        value={search}
-        onChangeText={val => onSetSearch(val)}
-      />
-      <Button title="Search" onPress={onSubmit} />
+      <ImageBackground
+        source={require('../Images/morning.jpg')}
+        style={styles.image}>
+        <Text style={styles.text}>Weather App</Text>
+
+        <TextInput
+          placeholderTextColor="#97adab"
+          style={styles.input}
+          placeholder="Enter location"
+          value={search}
+          onChangeText={val => onSetSearch(val)}
+        />
+        <View style={styles.row}>
+          <TouchableOpacity
+            style={styles.appButtonContainer}
+            onPress={onSubmit}>
+            <Text style={styles.appButtonText}>Search</Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    margin: 20,
+    flex: 1,
   },
   input: {
-    borderWidth: 1,
-    borderColor: '#dbdbdb',
-    borderRadius: 5,
+    borderRadius: 10,
     backgroundColor: 'white',
-    paddingVertical: 5,
+    padding: 6,
+    paddingBottom: 7,
     paddingHorizontal: 10,
+    width: '75%',
+    alignSelf: 'center',
     fontSize: 16,
-    marginVertical: 20,
+    marginTop: 20,
   },
   text: {
-    fontSize: 16,
+    fontSize: 25,
     textAlign: 'center',
     marginRight: 10,
+    fontWeight: 'bold',
+    color: 'white',
+    marginTop: 20,
+  },
+
+  icon: {
+    color: 'white',
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
+  appButtonContainer: {
+    elevation: 8,
+    backgroundColor: '#00c9b7',
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    marginTop: 20,
+    width: '30%',
+    alignSelf: 'center',
+  },
+  appButtonText: {
+    fontSize: 16,
+    color: '#fff',
+    alignSelf: 'center',
+    textTransform: 'uppercase',
   },
 });
 

@@ -1,10 +1,16 @@
-import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
+
+import Weather from './Weather';
 
 const WeatherDetail = () => {
+  const [loading, setLoading] = useState(false);
+  const {data, error} = useSelector(state => state.weather);
+
   return (
     <View style={styles.container}>
-      <Text>Weather Detail</Text>
+      <Weather loading={loading} data={data} error={error} />
     </View>
   );
 };
@@ -12,9 +18,7 @@ const WeatherDetail = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#f1f1f1',
   },
 });
-
 export default WeatherDetail;
