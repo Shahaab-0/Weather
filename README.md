@@ -1,2 +1,2 @@
 # Weather-React-Native
-Weather App React Native with open weather api using redux &redux thunk
+ React Native Weather App with open weather api using redux &redux thunk
